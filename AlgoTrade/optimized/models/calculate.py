@@ -18,4 +18,4 @@ class Calculate:
             else:
                 next
             self.total = self.total_cost + self.total_gain
-        return self.best_buy,self.total_cost,self.total_gain,self.total
+        return self.best_buy,round(self.total_cost,2),round(self.total_gain,2),round(self.total,2)
