@@ -52,14 +52,18 @@ def get_best_investment(invest_data):
                 best_invest = invest_combination
     return best_invest
 
+try:
+    data_table = create_data_table(str(sys.argv[1]))
+    all_combination = create_all_investment(data_table)
+    best_solution = get_best_investment(all_combination)
 
-data_table = create_data_table(str(sys.argv[1]))
-all_combination = create_all_investment(data_table)
-best_solution = get_best_investment(all_combination)
-
-retrieve = best_solution[1] + best_solution[2]
-for i in best_solution[0]:
-    print(i)
-print("Total cost : {}".format(best_solution[1]))
-print("Total gain : {}".format(best_solution[2]))
-print("For an investment of {} you'll retrieve {}".format(best_solution[1],round(retrieve,2)))
+    retrieve = best_solution[1] + best_solution[2]
+    for i in best_solution[0]:
+        print(i)
+    print("Total cost : {}".format(best_solution[1]))
+    print("Total gain : {}".format(best_solution[2]))
+    print("For an investment of {} you'll retrieve {}".format(best_solution[1],round(retrieve,2)))
+except IndexError:
+    print("\nVous devez entrer un nom de fichier de données\n")
+except FileNotFoundError:
+    print("\nVous devez sélectionner fichier de données existant\n")
